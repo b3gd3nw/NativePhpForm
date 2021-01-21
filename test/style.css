@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+html {
+    height: 100%
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/*-------Map----------------------------------*/
+
+.hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map_frame {
+    width: 100%;
+}
+
+/*-------Map----------------------------------*/
+
+/*------Form----------------------------------*/
+
+.form fieldset:not(:first-of-type) {
+    display: none;
+}
+.form_wrapper {
+    width: 50%;
+    margin: 30px 30px;
+}
+.form_title {
+    text-align: center;
+    padding: 20px 0;
+}
+.title {
+    font-size: 25px;
+}
+#progressbar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+    text-align: center;
+}
+
+#progressbar .active {
+    color: #74fc96
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400
+}
+
+#progressbar #first_step:before {
+    font-family: FontAwesome;
+    content: "\f13e"
+}
+
+#progressbar #second_step:before {
+    font-family: FontAwesome;
+    content: "\f13e"
+}
+
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px;
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 105px;
+    top: 25px;
+    z-index: -1;
+}
+
+#progressbar li:last-of-type:after {
+    content: '';
+    width: 50%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0px;
+    top: 25px;
+    z-index: -1;
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #74fc96;
+}
+.form_body {
+    padding: 20px 0px;
+}
+.form {
+    display: flex;
+    justify-content: center;
+}
+.form_item {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+.form_btn {
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.next {
+    padding: 0 40px;
+    float: right;
+}
+
+/*------Form----------------------------------*/
