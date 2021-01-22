@@ -2,7 +2,9 @@
 
 $router->define([
 
-    '' => 'controllers/index.php'
+    '' => 'controllers/index.php',
+    'names' => 'controllers/add-user.php',
+    'test' => 'controllers/test.php'
 
 ]);
 
