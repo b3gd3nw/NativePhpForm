@@ -1,12 +1,15 @@
 <?php
-require 'index.view.php';
-function __autoload($className)
-{
-    $className = str_replace( "..", "", $className );
-    require_once( "classes/$className.php" );
-    echo "Loaded classes/$className.php<br>";
-}
 
+require 'core/bootstrap.php';
 
+//$router = new Router;
+//
+//
+//require 'routes.php';
+//
 
+//
+//require $router->direct(trim($_SERVER['REQUEST_URI'], '/'));
 
+require Router::load('routes.php')
+    ->direct(Request::uri());

@@ -38,8 +38,8 @@ function sendAjaxForm(result_form, form, url) {
         type: 'POST',
         data : $("#"+form).serialize(),
         success : function (result) {
+            console.log(10);
             console.log(result);
         }
-
     });
 }
