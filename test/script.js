@@ -8,8 +8,6 @@ $(document).ready(function (){
     $(".next").click(function(){
         console.log(2);
 
-        sendAjaxForm('result_form', 'form', 'test_script.php');
-
         current_fs = $(this).parent();
         next_fs = $(this).parent().next();
 
@@ -30,16 +28,40 @@ $(document).ready(function (){
             });
 
     });
-});
 
-function sendAjaxForm(result_form, form, url) {
-    $.ajax({
-        url : url,
-        type: 'POST',
-        data : $("#"+form).serialize(),
-        success : function (result) {
-            console.log(10);
-            console.log(result);
+    $('#first-form').validate({
+        rules: {
+            firstname: {
+                required: true
+            },
+            lastname: {
+                required: true
+            }
+            // birth_date: {
+            //     required: true
+            // },
+            // report_subject: {
+            //     required: true
+            // },
+            // country: {
+            //     required: true
+            // },
+            // phone_number: {
+            //     required: true
+            // },
+            // email: {
+            //     required: true
+            // }
+        },
+        submitHandler: function (form) {
+            $(form).ajaxSubmit({
+                url: '/addUser',
+                type: 'post',
+                enctype: 'multipart/form-data',
+                success: function (data) {
+
+                }
+            })
         }
-    });
-}
+    })
+});

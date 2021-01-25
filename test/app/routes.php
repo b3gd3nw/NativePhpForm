@@ -9,7 +9,7 @@
 //]);
 
 $router->get('', 'PagesController@home');
-$router->post('names', 'controllers/add-user.php');
+$router->post('addUser', 'PagesController@addUser');
 
 
 //var_dump($router->routes);

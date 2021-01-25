@@ -9,46 +9,50 @@ class QueryBuilder {
         $this->pdo = $pdo;
     }
 
-    public function insertUser($table, $parameters)
+    public function insertUser($data)
     {
-//        $statement = $this->pdo->exec("INSERT INTO Users (first_name) VALUES ('$fname')");
-//
-////        $statement->executed();
-//
-//        return $statement->fetchAll(PDO::FETCH_CLASS);
-
-
-        $sql = sprintf(
-            'insert into %s (%s) values (%s)',
-            $table,
-            implode(', ',array_keys($parameters)),
-            ':' . implode(', :',array_keys($parameters))
+        $executeQuery = $this->conn->query("INSERT INTO user (first_name, last_name, birth_date, report_subject, country, phone, email) VALUES (?, ?, ?, ?, ?, ?, ?)",
+            [
+                $data['first_name'],
+                $data['last_name'],
+                date('Y-m-d', strtotime($data['birth_date'])),
+                $data['report_subject'],
+                $data['country'],
+                $data['phone'],
+                $data['email'],
+            ]
         );
 
-        try {
-            $statement = $this->pdo->prepare($sql);
-
-
-            $statement->execute($parameters);
-        } catch (Exception $e) {
-            die("ERR");
+        if ($executeQuery) {
+            return $data['first_name'];
+        } else {
+            return false;
         }
-
     }
 
     public function selectAll($table)
     {
- //       var_dump(21);
-        $sql = 'select * from {$table}';
-        try {
-            $statement = $this->pdo->prepare($sql);
-
-
-            $statement->execute('');
-        } catch (Exception $e) {
-            die("ERR");
-        }
+//        $statement = $this->pdo->query('SELECT first_name FROM Users')->fetchAll();
+//
+//        var_dump($statement);
+        $statement = $this->pdo->prepare("SELECT first_name FROM {$table}");
+        $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_CLASS);
+
+       // var_dump($result[0] => 'first_name');
+
+//        var_dump($table);
+//        $sql = 'select first_name from table = ?';
+//        try {
+//            $statement = $this->pdo->prepare($sql);
+//
+//            $statement->execute($table);
+//        } catch (Exception $e) {
+//            die("ERR");
+//        }
+//        $results = $statement->fetchAll(PDO::FETCH_CLASS, "QueryBuilder");
+//        var_dump($results);
+//        return $statement->fetchAll(PDO::FETCH_CLASS);
     }
 }
