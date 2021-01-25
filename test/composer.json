@@ -1,0 +1,19 @@
+{
+  "name": "vendor_name/test1",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "bogdan",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "classmap": [
+      "./"
+    ]
+  }
+}
