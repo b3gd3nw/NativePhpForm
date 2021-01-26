@@ -4,27 +4,43 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit837ba5787a5595c1a1ef60090fc1a484
+class ComposerStaticInitced7d4c00b91f0984c94b54f2a30f628
 {
+    public static $prefixLengthsPsr4 = array (
+        'a' => 
+        array (
+            'app\\' => 4,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'app\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
+    );
+
     public static $classMap = array (
-        'App\\Controllers\\PagesController' => __DIR__ . '/../..' . '/app/controllers/PagesController.php',
-        'App\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/controllers/UsersController.php',
-        'App\\Core\\App' => __DIR__ . '/../..' . '/core/App.php',
-        'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
-        'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
-        'App\\Models\\Project' => __DIR__ . '/../..' . '/app/models/Project.php',
-        'ComposerAutoloaderInit837ba5787a5595c1a1ef60090fc1a484' => __DIR__ . '/..' . '/composer/autoload_real.php',
+        'ComposerAutoloaderInitced7d4c00b91f0984c94b54f2a30f628' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
-        'Composer\\Autoload\\ComposerStaticInit837ba5787a5595c1a1ef60090fc1a484' => __DIR__ . '/..' . '/composer/autoload_static.php',
+        'Composer\\Autoload\\ComposerStaticInitced7d4c00b91f0984c94b54f2a30f628' => __DIR__ . '/..' . '/composer/autoload_static.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Connection' => __DIR__ . '/../..' . '/core/database/Connection.php',
-        'QueryBuilder' => __DIR__ . '/../..' . '/core/database/QueryBuilder.php',
+        'app\\controllers\\PagesController' => __DIR__ . '/../..' . '/app/controllers/PagesController.php',
+        'app\\controllers\\Test' => __DIR__ . '/../..' . '/app/controllers/Test.php',
+        'app\\core\\Controller' => __DIR__ . '/../..' . '/app/core/Controller.php',
+        'app\\core\\DBController' => __DIR__ . '/../..' . '/app/core/DBController.php',
+        'app\\core\\Model' => __DIR__ . '/../..' . '/app/core/Model.php',
+        'app\\core\\Request' => __DIR__ . '/../..' . '/app/core/Request.php',
+        'app\\core\\Router' => __DIR__ . '/../..' . '/app/core/Router.php',
+        'app\\models\\ProjectModel' => __DIR__ . '/../..' . '/app/models/ProjectModel.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit837ba5787a5595c1a1ef60090fc1a484::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitced7d4c00b91f0984c94b54f2a30f628::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitced7d4c00b91f0984c94b54f2a30f628::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitced7d4c00b91f0984c94b54f2a30f628::$classMap;
 
         }, null, ClassLoader::class);
     }

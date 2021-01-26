@@ -1,6 +1,7 @@
 <?php
+var_dump(23);
 require 'vendor/autoload.php';
-require 'core/bootstrap.php';
+require 'app/core/bootstrap.php';
 
 //$router = new Router;
 //
@@ -10,8 +11,7 @@ require 'core/bootstrap.php';
 
 //
 //require $router->direct(trim($_SERVER['REQUEST_URI'], '/'));
-use App\Core\{Router, Request};
-
+use app\core\{Router, Request};
 
 Router::load('app/routes.php')
     ->direct(Request::uri(), Request::method());

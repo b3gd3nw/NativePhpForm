@@ -1,19 +1,24 @@
 {
-  "name": "vendor_name/test1",
-  "description": "description",
+  "name": "vendor_name/package_name",
+  "description": "description_text",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
     {
-      "name": "bogdan",
+      "name": "author's name",
       "email": "email@example.com"
     }
   ],
-  "require": {
-  },
   "autoload": {
+    "psr-4": {
+      "app\\": "app/"
+    },
     "classmap": [
-      "./"
+        "./"
     ]
+  },
+  "config": {
+    "disable-tls": true,
+    "secure-http": false
   }
 }

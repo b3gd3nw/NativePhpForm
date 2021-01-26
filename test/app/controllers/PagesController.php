@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Controllers;
+namespace app\controllers;
 
-use App\Cre\App;
+use  app\core\Controller;
+use app\models\ProjectModel;
 
-class PagesController
+
+class PagesController extends Controller
 {
-    public function home ()
+    public function index()
     {
-
-//        var_dump($users);
-//        var_dump(compact($users));
+       $this->model = new ProjectModel();
         return view('index');
     }
 
     public function addUser()
     {
         var_dump(1);
+        $this->model = new ProjectModel();
         if (! empty(filter_input_array(INPUT_POST))) {
-
-            App::get('database')->insertUser(filter_input_array(INPUT_POST));
-            var_dump(3);
+            var_dump(filter_input_array(INPUT_POST));
+            $p = $this->model->addUser(filter_input_array(INPUT_POST));
+            var_dump($p);
         }
     }
-
 }

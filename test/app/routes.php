@@ -8,7 +8,7 @@
 //
 //]);
 
-$router->get('', 'PagesController@home');
+$router->get('', 'PagesController@index');
 $router->post('addUser', 'PagesController@addUser');
 
 

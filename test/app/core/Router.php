@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core;
+namespace app\core;
 
 class Router {
 
@@ -46,15 +46,17 @@ class Router {
 
     protected function callAction($controller, $action)
     {
-//        var_dump($controller, $action);
+        var_dump($controller);
         $controller = "App\\Controllers\\{$controller}";
+        var_dump(new $controller);
         $controller = new $controller;
+ //       var_dump($controller, $action);
         if (! method_exists($controller, $action)) {
             throw new Exception(
                 "{$controller} does not respond to the {$action} action."
             );
         }
-//        var_dump($controller->$action());
+        var_dump(4);
         return $controller->$action();
     }
 
