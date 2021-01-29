@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="form_body">
-                <fieldset>
+                <fieldset class="first_form">
                     <div class="form_card">
                         <div class="row">
                             <div class="col-sm-12 form_item">
@@ -78,8 +78,34 @@
                     </div>
                     <button id="first_btn" class="next action-button">Next</button>
                 </fieldset>
-                <fieldset>
-                    <?php require ('secondform.view.php'); ?>
+                <fieldset class="second_form">
+                    <div class="form_card">
+                        <div class="row">
+                            <div class="col-sm-12 form_item">
+                                <label for="company">Company</label>
+                                <input type="text" name="company">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form_item">
+                                <label for="position">Position</label>
+                                <input type="text" name="position">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form_item">
+                                <label for="about">About Me</label>
+                                <input type="textarea" name="about">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form_item">
+                                <label for="photo">Photo</label>
+                                <input type="file" name="photo">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="second_btn" class="next action-button">Next</button>
                 </fieldset>
             </div>
         </div>

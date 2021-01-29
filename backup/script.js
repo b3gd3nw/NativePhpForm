@@ -1,15 +1,55 @@
 $(document).ready(function (){
-    var current_fs, next_fs;
-    var opacity;
-    var current = 1;
-    var steps = $("fieldset").length;
+    let current_fs, next_fs;
+    let opacity;
+    let current = 1;
+    let steps = $("fieldset").length;
     let i = 0;
-    let step = "/first";
-    console.log(1);
+    let step = null;
+
+  //  let poop = $.cookie('step');
+ //   document.cookie = "step=first";
+  //
+    function readCookie(name) {
+
+        var name_cook = name+"=";
+        var spl = document.cookie.split(";");
+
+        for(var i=0; i<spl.length; i++) {
+
+            var c = spl[i];
+
+            while(c.charAt(0) == " ") {
+
+                c = c.substring(1, c.length);
+
+            }
+
+            if(c.indexOf(name_cook) == 0) {
+
+                return c.substring(name_cook.length, c.length);
+
+            }
+
+        }
+
+        return null;
+
+    }
+
+    //
+    console.log(readCookie("step"));
+    if (readCookie("step") === "second") {
+//        document.cookie = "step=three";
+        $(".first_form").hide();
+        $(".second_form").show();
+    }
+    else {
+        // $('.first_form').show();
+        // $('.second_form').hide();
+    }
 
     $(".next").click(function(){
-        console.log(2);
-
+ //       $.cookie('step', 2);
         current_fs = $(this).parent();
         next_fs = $(this).parent().next();
 
@@ -58,16 +98,17 @@ $(document).ready(function (){
                 }
             },
             submitHandler: function (form) {
-                console.log(i);
-                if (i > 0){
+                if (readCookie("step") === "second"){
                     step = "/second";
+                } else {
+                    step = "/first";
                 }
                 $(form).ajaxSubmit({
                     url: step,
                     type: 'post',
                     enctype: 'multipart/form-data',
                     success: function (data) {
-                        i++;
+                        document.cookie = "step=second";
                     }
                 })
             }

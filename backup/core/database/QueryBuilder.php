@@ -21,7 +21,7 @@ class QueryBuilder {
 
     public function insert($table, $parameters)
     {
-//        var_dump($parameters);
+//        var_dump.die(12);
         $sql = sprintf(
             'insert into %s (%s) values (%s)',
         $table,
@@ -36,21 +36,19 @@ class QueryBuilder {
         } catch (Exception $e) {
             die('INSERT_ERR');
         }
-        $this->last_id = $this->pdo->lastInsertId();
-        var_dump.die($this->last_id);
-//        var_dump(4);
+
+        return $this->pdo->lastInsertId();
     }
 
     public function  update($table, $parameters)
     {
-
         $sql = sprintf(
-          'update %s set %s where (%s)',
+            'insert into %s (%s) values (%s)',
             $table,
-            implode(', ', json_decode($parameters, true)),
-            '1'
+            implode(', ', array_keys($parameters)) . ', userid',
+            ':' . implode(', :', array_keys($parameters)) . ', ' . filter_input_array(INPUT_COOKIE)['userID']
         );
-        var_dump.die($sql);
+
         try {
             $statement = $this->pdo->prepare($sql);
 
@@ -58,7 +56,9 @@ class QueryBuilder {
         } catch (Exception $e) {
             die('UPDATE_ERR');
         }
-
-
+    }
+    public function lastID()
+    {
+        return $this->pdo->lastInsertId();
     }
 }

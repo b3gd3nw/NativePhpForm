@@ -9,8 +9,9 @@ class PagesController
 {
     public function home()
     {
+
        $users = App::get('database')->selectAll('Users');
-//var_dump($users);
+
         return view('index', $users);
     }
 }
