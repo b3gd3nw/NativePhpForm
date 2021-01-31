@@ -10,13 +10,21 @@ class QueryBuilder {
         $this->pdo = $pdo;
     }
 
-    public function selectAll($table)
+    public function viewAll()
     {
-        $statement = $this->pdo->prepare("select * from {$table}");
+//        var_dump.die(2);
+        $sql = "
+        select p.photo, first_name, last_name, report_subject, email  
+        from Users s
+        left JOIN Profile p on p.userid = s.userid";
+        try {
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute();
+        } catch (Exception $e){
+            die('SELECT_ERR');
+        }
 
-        $statement->execute();
-
-        return $statement->fetchAll(PDO::FETCH_CLASS);
+        return $statement->fetchAll();
     }
 
     public function insert($table, $parameters)
@@ -57,8 +65,17 @@ class QueryBuilder {
             die('UPDATE_ERR');
         }
     }
-    public function lastID()
+    public function getCountUser()
     {
-        return $this->pdo->lastInsertId();
+        $sql = "
+        SELECT COUNT(userid) as total FROM Users";
+        try {
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute();
+        } catch (Exception $e){
+            die('SELECT_ALL_ERR');
+        }
+
+        return $statement->fetchAll();
     }
 }

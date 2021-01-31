@@ -8,7 +8,6 @@ class UsersController
 {
     public function insert()
     {
-//        var_dump.die(1);
         $userid = App::get('database')->insert('Users', [
             'first_name' => $_POST['firstname'],
             'last_name' => $_POST['lastname'],
@@ -20,19 +19,37 @@ class UsersController
         ]);
         setcookie('userID', $userid, 0, '/');
         setcookie('step', 'second', 0 , '/');
+
+
         return redirect('');
     }
 
     public function update()
     {
- //       var_dump.die($this->last_id);
+
+        if (isset($_FILES['photo']['name']) && ! empty($_FILES['photo']['name'])) {
+            $imageName = $_FILES['photo']['name'];
+            $target = 'public/img/users/'.$imageName;
+            if (! is_dir('public/img/users/')) {
+                mkdir('public/img/users/');
+            }
+            move_uploaded_file($_FILES['photo']['tmp_name'], $target);
+        }
+
         App::get('database')->update('Profile', [
             'company' => $_POST['company'],
             'position' => $_POST['position'],
             'about_me' => $_POST['about'],
-            'photo' => $_POST['photo']
+            'photo' => $target
         ]);
+        setcookie('step', 'three', 0 , '/');
 
-        return redirect('');
+          return redirect('');
+    }
+
+    public function viewAll()
+    {
+        $users = App::get('database')->viewAll();
+        return view('all_members', $users);
     }
 }

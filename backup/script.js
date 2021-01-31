@@ -6,17 +6,15 @@ $(document).ready(function (){
     let i = 0;
     let step = null;
 
-  //  let poop = $.cookie('step');
- //   document.cookie = "step=first";
-  //
+    document.querySelector('#counter').textContent = "All members :" + readCookie("allUsers");
     function readCookie(name) {
 
-        var name_cook = name+"=";
-        var spl = document.cookie.split(";");
+        let name_cook = name+"=";
+        let spl = document.cookie.split(";");
 
-        for(var i=0; i<spl.length; i++) {
+        for(let i=0; i<spl.length; i++) {
 
-            var c = spl[i];
+            let c = spl[i];
 
             while(c.charAt(0) == " ") {
 
@@ -36,16 +34,22 @@ $(document).ready(function (){
 
     }
 
-    //
-    console.log(readCookie("step"));
+
     if (readCookie("step") === "second") {
 //        document.cookie = "step=three";
         $(".first_form").hide();
         $(".second_form").show();
+        $(".social_card").hide();
     }
-    else {
-        // $('.first_form').show();
-        // $('.second_form').hide();
+    else if (readCookie("step") === "three") {
+        $(".first_form").hide();
+        $(".second_form").hide();
+        $(".social_card").show();
+        $("#progressbar").hide();
+    } else{
+        $(".first_form").show();
+        $(".second_form").hide();
+        $(".social_card").hide();
     }
 
     $(".next").click(function(){
@@ -72,7 +76,6 @@ $(document).ready(function (){
     });
 
     $("#first_btn").click(function (){
-        console.log(11);
         $('#first-form').validate({
             rules: {
                 firstname: {
@@ -100,6 +103,8 @@ $(document).ready(function (){
             submitHandler: function (form) {
                 if (readCookie("step") === "second"){
                     step = "/second";
+                } else if(readCookie("step") === "three") {
+                    step = "/three";
                 } else {
                     step = "/first";
                 }
@@ -108,7 +113,9 @@ $(document).ready(function (){
                     type: 'post',
                     enctype: 'multipart/form-data',
                     success: function (data) {
-                        document.cookie = "step=second";
+
+        //                counter.content()
+//                        document.cookie = "step=second";
                     }
                 })
             }

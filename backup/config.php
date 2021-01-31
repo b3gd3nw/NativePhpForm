@@ -11,6 +11,13 @@ return [
         'options' => [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ]
+    ],
+
+    'share' => [
+        'link' => 'http://conference/',
+        'text' => 'Check out this Meetup with SoCal AngularJS!'
     ]
+
+
 
 ];
