@@ -1,6 +1,6 @@
 <?php
 
-namespace app\core;
+namespace application\core;
 
 class Router {
 
@@ -37,7 +37,7 @@ class Router {
     {
         var_dump($uri, $requestType);
         if (array_key_exists($uri, $this->routes[$requestType])){
-           return $this->callAction(
+            return $this->callAction(
                 ...explode('@', $this->routes[$requestType][$uri])
             );
         }
@@ -47,10 +47,11 @@ class Router {
     protected function callAction($controller, $action)
     {
         var_dump($controller);
-        $controller = "App\\Controllers\\{$controller}";
+        $controller = "application\\controllers\\{$controller}";
+        var_dump($controller);
         var_dump(new $controller);
         $controller = new $controller;
- //       var_dump($controller, $action);
+        //       var_dump($controller, $action);
         if (! method_exists($controller, $action)) {
             throw new Exception(
                 "{$controller} does not respond to the {$action} action."

@@ -1,9 +1,9 @@
 <?php
 
-namespace app\core;
+namespace application\core;
 
-abstract class Controller
-{
+abstract class Controller {
+
     public $model;
     public $view;
 
