@@ -27,37 +27,37 @@
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="firstname">First Name</label>
-                                <input type="text" name="firstname">
+                                <input type="text" name="firstname" class="required">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="lastname">Last Name</label>
-                                <input type="text" name="lastname">
+                                <input type="text" name="lastname" class="required">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="birthdate">Birth Date</label>
-                                <input type="date" name="birthdate">
+                                <input type="date" name="birthdate" class="required">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="report_subject">Report Subject</label>
-                                <input type="text" name="report_subject">
+                                <input type="text" name="report_subject" class="required">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="country">Country</label>
-                                <input type="text" name="country">
+                                <input type="text" name="country" class="required">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="phone_number">Phone Number</label>
-                                <input type="number" name="phone_number">
+                                <input type="number" name="phone_number" class="required">
                             </div>
                         </div>
                         <div class="row">
@@ -74,19 +74,19 @@
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="company">Company</label>
-                                <input type="text" name="company">
+                                <input type="text" name="company" class="required">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="position">Position</label>
-                                <input type="text" name="position">
+                                <input type="text" name="position" class="required">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="about">About Me</label>
-                                <input type="textarea" name="about">
+                                <input type="textarea" name="about" class="required">
                             </div>
                         </div>
                         <div class="row">
@@ -103,7 +103,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="item">
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u="
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?= $data['link'] ?>"
                                        onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
                                         <img src="/public/img/facebook.svg" alt="facebook">
                                     </a>
@@ -111,7 +111,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="item">
-                                    <a href="http://twitter.com/share?&url="
+                                    <a href="http://twitter.com/share?&url=<?= $data['link'] ?>&text=<?= $data['text'] ?>"
                                        onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
                                         <img src="/public/img/twitter.svg" alt="twitter">
                                     </a>

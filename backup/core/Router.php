@@ -4,44 +4,58 @@ namespace App\Core;
 
 class Router {
 
+    /**
+     * All routes.
+     * @var array[]
+     */
     public $routes = [
         'GET' => [],
         'POST' => []
     ];
 
+    /**
+     * Load a routes file.
+     * @param $file
+     * @return static
+     */
     public static function load($file)
     {
 
         $router = new static;
 
         require $file;
-       // var_dump('1');
-        //var_dump($router);
+
         return $router;
 
     }
 
-    public function define($routes)
-    {
-        $this->routes = $routes;
-    }
-
+    /**
+     * Register GET route.
+     * @param $uri
+     * @param $controller
+     */
     public function get($uri, $controller){
-
         $this->routes['GET'][$uri] = $controller;
-//        var_dump($this->routes['GET'][$uri]);
     }
 
+    /**
+     * Register POST route.
+     * @param $uri
+     * @param $controller
+     */
     public function post($uri, $controller){
-
         $this->routes['POST'][$uri] = $controller;
-//        var_dump($this->routes['POST'][$uri]);
     }
 
+    /**
+     * Gets direction and calls an action.
+     * @param $uri
+     * @param $requestType
+     * @return mixed
+     */
     public function direct($uri, $requestType)
     {
         if (array_key_exists($uri, $this->routes[$requestType])){
-//            return $this->routes[$requestType][$uri];
             return $this->callAction(
                 ...explode('@', $this->routes[$requestType][$uri])
             );
@@ -49,19 +63,22 @@ class Router {
         throw new Exception("No routes define for this uri");
     }
 
+    /**
+     * Calls the resulting action of the received controller.
+     * @param $controller
+     * @param $action
+     * @return mixed
+     */
     protected function callAction($controller, $action)
     {
-//        var_dump($controller);
         $controller = "App\\Controllers\\{$controller}";
-//        var_dump(new $controller);
         $controller = new $controller;
-        //      var_dump($controller, $action);
+
         if (! method_exists($controller, $action)) {
             throw new Exception(
                 "{$controller} does not respond to the {$action} action."
             );
         }
-//        var_dump(4);
         return $controller->$action();
     }
 

@@ -3,16 +3,18 @@
 class QueryBuilder {
 
     protected $pdo;
-    protected $last_id;
 
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
     }
 
+    /**
+     * Creates a query to database on return all members.
+     * @return mixed
+     */
     public function viewAll()
     {
-//        var_dump.die(2);
         $sql = "
         select p.photo, first_name, last_name, report_subject, email  
         from Users s
@@ -27,9 +29,13 @@ class QueryBuilder {
         return $statement->fetchAll();
     }
 
+    /**
+     * Creates a database query to insert a user.
+     * @param string $table
+     * @param array $parameters User information from step one.
+     */
     public function insert($table, $parameters)
     {
-//        var_dump.die(12);
         $sql = sprintf(
             'insert into %s (%s) values (%s)',
         $table,
@@ -44,10 +50,13 @@ class QueryBuilder {
         } catch (Exception $e) {
             die('INSERT_ERR');
         }
-
-        return $this->pdo->lastInsertId();
     }
 
+    /**
+     * Creates a database query to insert a profile.
+     * @param $table
+     * @param $parameters Profile information from step two.
+     */
     public function  update($table, $parameters)
     {
         $sql = sprintf(
@@ -65,6 +74,11 @@ class QueryBuilder {
             die('UPDATE_ERR');
         }
     }
+
+    /**
+     * Creates a database query on return all members count.
+     * @return mixed
+     */
     public function getCountUser()
     {
         $sql = "

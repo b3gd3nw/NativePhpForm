@@ -2,6 +2,12 @@
 
 namespace App\Core;
 
+/**
+ * Do not work.
+ * Class Controller
+ * @package App\Core
+ *
+ */
 abstract class Controller
 {
     public $model;

@@ -6,6 +6,9 @@ use App\Core\App;
 
 class UsersController
 {
+    /**
+     * Save user information from step one to the database.
+     */
     public function insert()
     {
         $userid = App::get('database')->insert('Users', [
@@ -24,9 +27,11 @@ class UsersController
         return redirect('');
     }
 
+    /**
+     * Save user information from step two to the database.
+     */
     public function update()
     {
-
         if (isset($_FILES['photo']['name']) && ! empty($_FILES['photo']['name'])) {
             $imageName = $_FILES['photo']['name'];
             $target = 'public/img/users/'.$imageName;
@@ -47,6 +52,9 @@ class UsersController
           return redirect('');
     }
 
+    /**
+     * Return all users from database to 'All members' page.
+     */
     public function viewAll()
     {
         $users = App::get('database')->viewAll();

@@ -2,60 +2,51 @@ $(document).ready(function (){
     let current_fs, next_fs;
     let opacity;
     let current = 1;
-    let steps = $("fieldset").length;
+    let currentButton = '#first_btn';
     let i = 0;
     let step = null;
 
-    document.querySelector('#counter').textContent = "All members :" + readCookie("allUsers");
+    document.querySelector('#counter').textContent = "All members : " + readCookie("allUsers");
+
     function readCookie(name) {
 
         let name_cook = name+"=";
         let spl = document.cookie.split(";");
 
         for(let i=0; i<spl.length; i++) {
-
             let c = spl[i];
-
             while(c.charAt(0) == " ") {
-
                 c = c.substring(1, c.length);
-
             }
-
             if(c.indexOf(name_cook) == 0) {
-
                 return c.substring(name_cook.length, c.length);
-
             }
-
         }
-
         return null;
-
     }
 
-
     if (readCookie("step") === "second") {
-//        document.cookie = "step=three";
         $(".first_form").hide();
         $(".second_form").show();
         $(".social_card").hide();
+        currentButton = '#second_btn';
     }
     else if (readCookie("step") === "three") {
         $(".first_form").hide();
         $(".second_form").hide();
         $(".social_card").show();
         $("#progressbar").hide();
+        currentButton = '#second_btn';
     } else{
         $(".first_form").show();
         $(".second_form").hide();
         $(".social_card").hide();
+        currentButton = '#first_btn';
     }
 
-    $(".next").click(function(){
- //       $.cookie('step', 2);
-        current_fs = $(this).parent();
-        next_fs = $(this).parent().next();
+    function steps(currentButton){
+        current_fs = $(currentButton).parent();
+        next_fs = $(currentButton).parent().next();
 
         next_fs.show();
         $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
@@ -73,9 +64,9 @@ $(document).ready(function (){
             duration: 500
             });
 
-    });
+    }
 
-    $("#first_btn").click(function (){
+    $(currentButton).click(function (){
         $('#first-form').validate({
             rules: {
                 firstname: {
@@ -98,6 +89,12 @@ $(document).ready(function (){
                 },
                 email: {
                     required: true
+                },
+                company: {
+                    required: true
+                },
+                position: {
+                    required: true
                 }
             },
             submitHandler: function (form) {
@@ -113,12 +110,13 @@ $(document).ready(function (){
                     type: 'post',
                     enctype: 'multipart/form-data',
                     success: function (data) {
-
-        //                counter.content()
-//                        document.cookie = "step=second";
+                        steps(currentButton);
+                        currentButton = '#second_btn';
                     }
                 })
             }
         })
     })
+
+
 });
