@@ -32,7 +32,7 @@ CREATE TABLE `Profile` (
   PRIMARY KEY (`profileid`),
   KEY `userid` (`userid`),
   CONSTRAINT `Profile_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `Users` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `Users` (
   `email` varchar(100) DEFAULT NULL,
   `userid` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,4 +84,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-02 10:58:39
+-- Dump completed on 2021-02-02 13:54:17
