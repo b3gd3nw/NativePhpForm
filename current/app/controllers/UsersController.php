@@ -11,20 +11,21 @@ class UsersController
      */
     public function insert()
     {
+        $phone = str_replace(['+', ' ', '-', '(', ')'], '', $_POST['phone']);
         $userid = App::get('database')->insert('Users', [
             'first_name' => $_POST['firstname'],
             'last_name' => $_POST['lastname'],
             'birth_date' => $_POST['birthdate'],
             'report_subject' => $_POST['report_subject'],
             'country' => $_POST['country'],
-            'phone_number' => $_POST['phone_number'],
+            'phone_number' => $phone,
             'email' => $_POST['email']
         ]);
         setcookie('userID', $userid, 0, '/');
         setcookie('step', 'second', 0 , '/');
 
 
-        return redirect('');
+       return redirect('');
     }
 
     /**

@@ -51,13 +51,13 @@
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="country">Country</label>
-                                <input type="text" name="country" class="required">
+                                <select type="text" name="country" id="country" class="required"></select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form_item">
-                                <label for="phone_number">Phone Number</label>
-                                <input type="number" name="phone_number" class="required">
+                                <label for="phone">Phone Number</label>
+                                <input type="text" name="phone" id="phone-number" class="required">
                             </div>
                         </div>
                         <div class="row">
@@ -74,19 +74,19 @@
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="company">Company</label>
-                                <input type="text" name="company" class="required">
+                                <input type="text" name="company" >
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="position">Position</label>
-                                <input type="text" name="position" class="required">
+                                <input type="text" name="position" >
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="about">About Me</label>
-                                <input type="textarea" name="about" class="required">
+                                <textarea type="text" name="about" ></textarea>
                             </div>
                         </div>
                         <div class="row">

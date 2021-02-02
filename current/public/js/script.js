@@ -6,6 +6,20 @@ $(document).ready(function (){
     let i = 0;
     let step = null;
 
+    window.onload = function () {
+        $('#country').append("<option value=''></option>")
+        Object.keys(allCountry).forEach(function (key) {
+            $('#country').append("<option value='" + key + "'" + ">" + allCountry[key] + "</option>")
+        })
+    }
+
+    $('#phone-number').mask(phoneMask['US'])
+    $.mask.definitions['*'] = '[0-9]'
+    $('#country').change(function () {
+        const country = $(this).val()
+        $('#phone-number').mask(phoneMask[country])
+    })
+
     document.querySelector('#counter').textContent = "All members : " + readCookie("allUsers");
 
     function readCookie(name) {
@@ -88,12 +102,6 @@ $(document).ready(function (){
                     required: true
                 },
                 email: {
-                    required: true
-                },
-                company: {
-                    required: true
-                },
-                position: {
                     required: true
                 }
             },
