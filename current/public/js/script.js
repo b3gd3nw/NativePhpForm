@@ -17,9 +17,9 @@ $(document).ready(function (){
 
 
     $.mask.definitions['*'] = '[0-9]'
-    $('#phone-number').on('input keyup', function () {
-        const code = $(this).val()
-        $('#phone-number').mask(phoneMask[code])
+    $('#country').change(function () {
+        const country = $(this).val()
+        $('#phone-number').mask(phoneMask[country])
     })
 
     document.querySelector('#counter').textContent = "All members : " + readCookie("allUsers");
