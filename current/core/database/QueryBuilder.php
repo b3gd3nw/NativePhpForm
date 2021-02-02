@@ -50,6 +50,8 @@ class QueryBuilder {
         } catch (Exception $e) {
             die('INSERT_ERR');
         }
+
+        return $this->pdo->lastInsertId();
     }
 
     /**

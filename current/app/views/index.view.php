@@ -130,6 +130,6 @@
     </form>
 </div>
 <div id="result_form"></div>
-<script src="script.js"></script>
+<script src="/public/js/script.js"/"></script>
 <?php require('partials/footer.php'); ?>
 
