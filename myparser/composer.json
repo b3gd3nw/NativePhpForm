@@ -1,0 +1,18 @@
+{
+  "name": "vendor_name/myparser",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "developer",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^7.0",
+    "symfony/dom-crawler": "^5.2",
+    "monolog/monolog": "^2.2",
+    "stil/xpath-selector": "^2.0"
+  }
+}
