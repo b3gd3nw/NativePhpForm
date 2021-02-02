@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="birthdate">Birth Date</label>
-                                <input type="date" name="birthdate" class="required">
+                                <input type="text" name="birthdate" class="required" id="datepicker" readonly="readonly">
                             </div>
                         </div>
                         <div class="row">

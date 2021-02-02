@@ -13,11 +13,13 @@ $(document).ready(function (){
         })
     }
 
-    $('#phone-number').mask(phoneMask['US'])
+    $('#datepicker').datepicker();
+
+
     $.mask.definitions['*'] = '[0-9]'
-    $('#country').change(function () {
-        const country = $(this).val()
-        $('#phone-number').mask(phoneMask[country])
+    $('#phone-number').on('input keyup', function () {
+        const code = $(this).val()
+        $('#phone-number').mask(phoneMask[code])
     })
 
     document.querySelector('#counter').textContent = "All members : " + readCookie("allUsers");
