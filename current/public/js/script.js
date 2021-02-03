@@ -13,14 +13,28 @@ $(document).ready(function (){
         })
     }
 
-    $('#datepicker').datepicker();
+    $('#datepicker').datepicker({
+        format: 'mm/dd/yyyy',
+        endDate: '-3d'
+    });
 
+    $("#firstname").keypress(function(event){
+        let inputValue = event.which;
 
-    $.mask.definitions['*'] = '[0-9]'
-    $('#country').change(function () {
-        const country = $(this).val()
-        $('#phone-number').mask(phoneMask[country])
-    })
+        if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+            event.preventDefault();
+        }
+    });
+
+    $("#lastname").keypress(function(event){
+        var inputValue = event.which;
+        // allow letters and whitespaces only.
+        if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+            event.preventDefault();
+        }
+    });
+
+    $('#phone-number').mask('+1 (999) 999-9999')
 
     document.querySelector('#counter').textContent = "All members : " + readCookie("allUsers");
 
@@ -105,6 +119,14 @@ $(document).ready(function (){
                 },
                 email: {
                     required: true
+                },
+                photo: {
+                    extension: 'png|jpe?g|gif'
+                },
+            },
+            messages: {
+                photo: {
+                    extension: 'Only files .jpg, .png, .gif allowed.'
                 }
             },
             submitHandler: function (form) {

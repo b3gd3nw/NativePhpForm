@@ -27,13 +27,13 @@
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="firstname">First Name</label>
-                                <input type="text" name="firstname" class="required">
+                                <input id="firstname" type="text" name="firstname" class="required">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="lastname">Last Name</label>
-                                <input type="text" name="lastname" class="required">
+                                <input id="lastname" type="text" name="lastname" class="required">
                             </div>
                         </div>
                         <div class="row">
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                     </div>
-                    <button id="first_btn" class="next btn btn-primary">Next</button>
+                    <button id="first_btn" class="next_btn btn btn-primary">Next</button>
                 </fieldset>
                 <fieldset class="second_form">
                     <div class="form_card">
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    <button id="second_btn" class="next btn btn-primary">Next</button>
+                    <button id="second_btn" class="next_btn btn btn-primary">Next</button>
                 </fieldset>
                 <fieldset class="social_card">
                     <div class="social">
@@ -130,6 +130,6 @@
     </form>
 </div>
 <div id="result_form"></div>
-<script src="/public/js/script.js"/"></script>
+
 <?php require('partials/footer.php'); ?>
 

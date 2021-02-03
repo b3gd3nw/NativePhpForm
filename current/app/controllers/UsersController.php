@@ -11,11 +11,15 @@ class UsersController
      */
     public function insert()
     {
+        var_dump($_POST);
         $phone = str_replace(['+', ' ', '-', '(', ')'], '', $_POST['phone']);
+        $date = date("Y-m-d", strtotime($_POST['birthdate']));
+    var_dump($phone);
+    var_dump($date);
         $userid = App::get('database')->insert('Users', [
             'first_name' => $_POST['firstname'],
             'last_name' => $_POST['lastname'],
-            'birth_date' => $_POST['birthdate'],
+            'birth_date' => $date,
             'report_subject' => $_POST['report_subject'],
             'country' => $_POST['country'],
             'phone_number' => $phone,
@@ -25,7 +29,7 @@ class UsersController
         setcookie('step', 'second', 0 , '/');
 
 
-       return redirect('');
+ //      return redirect('');
     }
 
     /**
