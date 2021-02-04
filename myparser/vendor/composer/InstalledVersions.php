@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'c3f47c2fb3097445ca2968f7cc54753b331ef4a6',
+    'reference' => '16e894722cce088bfdc24b507bb84bb2af8ecc63',
     'name' => 'vendor_name/myparser',
   ),
   'versions' => 
@@ -136,6 +136,15 @@ private static $installed = array (
       ),
       'reference' => '06b40813095e14ddc0c4dbf7e7108f83279514d7',
     ),
+    'symfony/css-selector' => 
+    array (
+      'pretty_version' => 'v5.2.3',
+      'version' => '5.2.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f65f217b3314504a1ec99c2d6ef69016bb13490f',
+    ),
     'symfony/dom-crawler' => 
     array (
       'pretty_version' => 'v5.2.2',
@@ -179,7 +188,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'c3f47c2fb3097445ca2968f7cc54753b331ef4a6',
+      'reference' => '16e894722cce088bfdc24b507bb84bb2af8ecc63',
     ),
   ),
 );

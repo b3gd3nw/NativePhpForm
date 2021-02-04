@@ -1,2 +1,3 @@
 <?php
- require 'parser.php';
+
+require 'vendor/autoload.php';

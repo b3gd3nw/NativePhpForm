@@ -13,6 +13,12 @@
     "guzzlehttp/guzzle": "^7.0",
     "symfony/dom-crawler": "^5.2",
     "monolog/monolog": "^2.2",
-    "stil/xpath-selector": "^2.0"
+    "stil/xpath-selector": "^2.0",
+    "symfony/css-selector": "^5.2"
+  },
+  "autoload": {
+    "classmap": [
+      "./"
+    ]
   }
 }
