@@ -105,7 +105,7 @@ $(document).ready(function (){
             rules: {
                 firstname: {
                     required: true,
-                    lettersonly: true,
+//                    lettersonly: true,
                     maxlength: 100
                 },
                 lastname: {
@@ -129,7 +129,11 @@ $(document).ready(function (){
                 },
                 email: {
                     required: true,
-                    maxlength: 100
+                    maxlength: 100,
+                    remote: {
+                        url: '/checkExistsEmail',
+                        type: 'post'
+                    }
                 },
                 company: {
                     maxlength: 100
@@ -147,6 +151,9 @@ $(document).ready(function (){
             messages: {
                 photo: {
                     extension: 'Only files .jpg, .png, .gif allowed.'
+                },
+                email: {
+                    remote: 'User with this email already exists.'
                 }
             },
             submitHandler: function (form) {

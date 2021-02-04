@@ -64,4 +64,10 @@ class UsersController
         $users = App::get('database')->viewAll();
         return view('all_members', $users);
     }
+
+//    public function emailCheck()
+//    {
+//        if(App::get('database')->checkExistsEmile($_POST['emile']))
+//
+//    }
 }
