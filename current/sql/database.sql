@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.22, for Linux (x86_64)
 --
 -- Host: localhost    Database: test_db
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.22-0ubuntu0.20.04.3
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,13 +26,13 @@ CREATE TABLE `Profile` (
   `profileid` int NOT NULL AUTO_INCREMENT,
   `company` varchar(100) DEFAULT NULL,
   `position` varchar(100) DEFAULT NULL,
-  `about_me` varchar(255) DEFAULT NULL,
+  `about_me` varchar(500) DEFAULT NULL,
   `photo` blob,
   `userid` int DEFAULT NULL,
   PRIMARY KEY (`profileid`),
   KEY `userid` (`userid`),
   CONSTRAINT `Profile_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `Users` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `Profile` (
 
 LOCK TABLES `Profile` WRITE;
 /*!40000 ALTER TABLE `Profile` DISABLE KEYS */;
-INSERT INTO `Profile` VALUES (10,'Albedo','Student','ljlkjhkl;h\';k  hljkhouiagdhkasjgdasjdlgasiufay  a87d',_binary 'public/img/users/3683.jpg',23);
+INSERT INTO `Profile` VALUES (10,'Albedo','Student','ljlkjhkl;h\';k  hljkhouiagdhkasjgdasjdlgasiufay  a87d',_binary 'public/img/users/3683.jpg',23),(11,'~!!@#$%^&*(','~!!@#$%^&*(','~!!@#$%^&*(',NULL,25),(12,'asdasdsads$^^(&&(*&&^^%%$^!~@!#$%^&*()*^%$^$','','',NULL,26),(13,'','','',NULL,27);
 /*!40000 ALTER TABLE `Profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `Users` (
   `email` varchar(100) DEFAULT NULL,
   `userid` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES ('Bogdan','Kogdan','2021-01-09','asdsadasd asds asdgcxbx asdklsa hasd has dhlashdjah lkh asdjlh oi ','AS',14444444444,'log.lohuha@gmail.com',23);
+INSERT INTO `Users` VALUES ('Bogdan','Kogdan','2021-01-09','asdsadasd asds asdgcxbx asdklsa hasd has dhlashdjah lkh asdjlh oi ','AS',14444444444,'log.lohuha@gmail.com',23),('maxlengthmaxlength','asdsad','2021-02-01','maxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlemaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlengthmaxlen','AZ',23222222222,'sdawe@qwe.com',24),('asd','sdsd','2021-02-01','asdasdasdasdasdasdasdasdasdasdasdas/.=-/*-+<>?!@#$%%^^&*()__=```~~~~','AT',12313134123,'qwe@qwe.com',25),('asdasdsadasd','sadsadsad','2021-02-01','sadsadw12312sadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsad~!@#&^*~&*%*%^*%&%*&^$$%$%$**%(())&*)_/*/*--+++++','AW',11111111111,'qwe@qwe.com',26),('dsadsadsadsdsacxcxc','dsasa','2021-02-03','asdasdsadsadasdsadsadsadsa235235353252535352 332 5 523 532 5 235 253 32552332 5 55223 523#######','AW',33333333333,'qwe@qwe.com',27);
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -84,4 +84,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-04  1:33:58
+-- Dump completed on 2021-02-04 14:04:04

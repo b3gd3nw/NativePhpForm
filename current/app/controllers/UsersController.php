@@ -14,8 +14,7 @@ class UsersController
         var_dump($_POST);
         $phone = str_replace(['+', ' ', '-', '(', ')'], '', $_POST['phone']);
         $date = date("Y-m-d", strtotime($_POST['birthdate']));
-    var_dump($phone);
-    var_dump($date);
+
         $userid = App::get('database')->insert('Users', [
             'first_name' => $_POST['firstname'],
             'last_name' => $_POST['lastname'],

@@ -15,7 +15,7 @@ $(document).ready(function (){
 
     $('#datepicker').datepicker({
         format: 'mm/dd/yyyy',
-        endDate: '-3d'
+        endDate: '-1d'
     });
 
     $("#firstname").keypress(function(event){
@@ -27,16 +27,20 @@ $(document).ready(function (){
     });
 
     $("#lastname").keypress(function(event){
-        var inputValue = event.which;
+        let inputValue = event.which;
         // allow letters and whitespaces only.
         if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
             event.preventDefault();
         }
     });
 
-    $('#phone-number').mask('+1 (999) 999-9999')
+    $('#phone-number').inputmask('+9 (999) 999-9999');
 
-    document.querySelector('#counter').textContent = "All members : " + readCookie("allUsers");
+    let counter = document.querySelector('#counter');
+    if(counter) {
+        counter.textContent = "All members : " + readCookie("allUsers");
+    }
+ //   document.querySelector('#counter').textContent = "All members : " + readCookie("allUsers");
 
     function readCookie(name) {
 
@@ -100,25 +104,41 @@ $(document).ready(function (){
         $('#first-form').validate({
             rules: {
                 firstname: {
-                    required: true
+                    required: true,
+                    lettersonly: true,
+                    maxlength: 100
                 },
                 lastname: {
-                    required: true
+                    required: true,
+                    lettersonly: true,
+                    maxlength: 100
                 },
                 birth_date: {
                     required: true
                 },
                 report_subject: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 country: {
-                    required: true
+                    required: true,
+                    maxlength: 100
                 },
                 phone_number: {
                     required: true
                 },
                 email: {
-                    required: true
+                    required: true,
+                    maxlength: 100
+                },
+                company: {
+                    maxlength: 100
+                },
+                position: {
+                    maxlength: 100
+                },
+                about: {
+                    maxlength: 500
                 },
                 photo: {
                     extension: 'png|jpe?g|gif'

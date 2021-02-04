@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="phone">Phone Number</label>
-                                <input type="text" name="phone" id="phone-number" class="required">
+                                <input type="tel" name="phone" id="phone-number" class="required">
                             </div>
                         </div>
                         <div class="row">
