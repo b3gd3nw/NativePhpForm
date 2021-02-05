@@ -42,7 +42,7 @@
     <?php endif; ?>
     <div class="row">
         <div class="col-sm-12">
-            <a href="/" class="btn btn-primary">Back to homepage</a>
+            <a href="/" id="back_to_home" class="btn btn-primary">Back to homepage</a>
         </div>
     </div>
 </div>

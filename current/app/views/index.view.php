@@ -63,7 +63,7 @@
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="email">Email</label>
-                                <input type="email" name="email">
+                                <input id="email" type="email" name="email">
                             </div>
                         </div>
                     </div>

@@ -65,9 +65,21 @@ class UsersController
         return view('all_members', $users);
     }
 
-//    public function emailCheck()
-//    {
-//        if(App::get('database')->checkExistsEmile($_POST['emile']))
-//
-//    }
+    public function emailCheck()
+    {
+        if (filter_has_var(INPUT_POST, 'email')) {
+
+            if(App::get('database')->checkExistsEmail(filter_input(INPUT_POST, 'email')))
+            {
+
+                echo "false";
+
+            } else {
+
+                echo "true";
+
+            }
+        }
+
+    }
 }

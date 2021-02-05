@@ -97,16 +97,17 @@ class QueryBuilder {
 
     public function checkExistsEmail($email)
     {
-        $sql = sprintf('SELECT COUNT(userid) as total FROM user WHERE email = %s', $email);
+
+        $sql = 'SELECT COUNT(userid) as total FROM Users WHERE email = :email';
+
         try {
             $statement = $this->pdo->prepare($sql);
-            $statement->execute();
+            $statement->execute(array(':email' => $email));
         } catch (Exception $e) {
             die('EMAIL_CHECK_ERR');
         }
 
-        var_dump($statement->fetchAll());
-        return $statement->fetchAll()['total'] > 0 ? true : false;
+        return $statement->fetchAll()[0]['total'] > 0 ? true : false;
     }
 
 }

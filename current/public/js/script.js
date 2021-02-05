@@ -40,7 +40,7 @@ $(document).ready(function (){
     if(counter) {
         counter.textContent = "All members : " + readCookie("allUsers");
     }
- //   document.querySelector('#counter').textContent = "All members : " + readCookie("allUsers");
+
 
     function readCookie(name) {
 
@@ -100,6 +100,21 @@ $(document).ready(function (){
 
     }
 
+    $('#back_to_home').click( function () {
+        document.cookie = "step=first";
+        currentButton = '#first_btn';
+    })
+
+    $(document).on('change', '#photo', function () {
+        if (this.files[0].size > 2000000) {
+            $('#photo-size-error').html('File must be less than 2 mb.')
+            $('#submit').prop('disabled', true)
+        } else {
+            $('#submit').prop('disabled', false)
+            $('#photo-size-error').empty()
+        }
+    })
+
     $(currentButton).click(function (){
         $('#first-form').validate({
             rules: {
@@ -110,7 +125,7 @@ $(document).ready(function (){
                 },
                 lastname: {
                     required: true,
-                    lettersonly: true,
+//                    lettersonly: true,
                     maxlength: 100
                 },
                 birth_date: {
@@ -130,9 +145,11 @@ $(document).ready(function (){
                 email: {
                     required: true,
                     maxlength: 100,
+                    email: true,
                     remote: {
-                        url: '/checkExistsEmail',
-                        type: 'post'
+                        url: '/emailCheck',
+                        type: 'post',
+
                     }
                 },
                 company: {
@@ -153,7 +170,7 @@ $(document).ready(function (){
                     extension: 'Only files .jpg, .png, .gif allowed.'
                 },
                 email: {
-                    remote: 'User with this email already exists.'
+                    remote: 'Emile already exists.'
                 }
             },
             submitHandler: function (form) {
