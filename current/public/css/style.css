@@ -178,4 +178,8 @@ table {
     margin: 0 0 1em;
 }
 
+.table-container .report_subject {
+    word-break: break-word;
+}
+
 /*----All Members Page------------------------*/

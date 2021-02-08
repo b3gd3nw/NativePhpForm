@@ -31,7 +31,7 @@
                                          alt="user_photo">
                                 </td>
                                 <td><?= $user['first_name'] ?> <?= $user['last_name'] ?></td>
-                                <td><?= $user['report_subject'] ?></td>
+                                <td class="report_subject"><?= $user['report_subject'] ?></td>
                                 <td><a href="mailto:<?= $user['email'] ?>"><?= $user['email'] ?></a></td>
                             </tr>
                         <?php endforeach; ?>
