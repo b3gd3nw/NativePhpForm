@@ -23,4 +23,21 @@ class ParserController extends Controller
         }
     }
 
+    public function parse()
+    {
+        $xpath = $this->getPage($this->url);
+        $nav = $xpath->query("//ul[contains(@class, 'dnrg')]/*");
+        var_dump($nav);
+        foreach ($nav as $item)
+        {
+            var_dump($item);
+            foreach ($item->getElementByTagName('a') as $link)
+            {
+                var_dump($link);
+//                $href = $link->getAttribute('href');
+//                var_dump($href);
+            }
+        }
+    }
+
 }

@@ -11,12 +11,14 @@ class Controller implements IParser
 
     public function __construct()
     {
-        $this->config = require "../config/config.php";
-
-
+        $this->config = require 'app/config/config.php';
     }
 
-    public function getPage(string $url) {
-
+    public function getPage(string $url)
+    {
+        $content = file_get_contents($url);
+        $dom = new \DOMDocument();
+        @$dom->loadHTML($content);
+        return new \DOMXPath($dom);
     }
 }

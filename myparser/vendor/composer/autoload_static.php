@@ -405,8 +405,12 @@ class ComposerStaticInit8b3cde30cd73da0062ca4f0cee3da551
         'XPathSelector\\Tests\\SelectorTest' => __DIR__ . '/..' . '/stil/xpath-selector/src/Tests/SelectorTest.php',
         'XPathSelector\\Tests\\TestCase' => __DIR__ . '/..' . '/stil/xpath-selector/src/Tests/TestCase.php',
         'app\\controllers\\ParserController' => __DIR__ . '/../..' . '/app/controllers/ParserController.php',
+        'app\\controllers\\ProxyController' => __DIR__ . '/../..' . '/app/controllers/ProxyController.php',
+        'app\\controllers\\ThreadController' => __DIR__ . '/../..' . '/app/controllers/ThreadController.php',
         'app\\core\\Controller' => __DIR__ . '/../..' . '/app/core/Controller.php',
         'app\\core\\Database' => __DIR__ . '/../..' . '/app/core/Database.php',
+        'app\\core\\Request' => __DIR__ . '/../..' . '/app/core/Request.php',
+        'app\\core\\Router' => __DIR__ . '/../..' . '/app/core/Router.php',
         'app\\interfaces\\IParser' => __DIR__ . '/../..' . '/app/interfaces/IParser.php',
         'app\\models\\Model' => __DIR__ . '/../..' . '/app/models/Model.php',
     );

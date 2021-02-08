@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'url' => 'site_for_parse',
+    'url' => 'https://www.kreuzwort-raetsel.net/uebersicht.html',
     'database' => [
 
         'name' => 'test_db',

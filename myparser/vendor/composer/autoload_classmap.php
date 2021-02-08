@@ -308,8 +308,12 @@ return array(
     'XPathSelector\\Tests\\SelectorTest' => $vendorDir . '/stil/xpath-selector/src/Tests/SelectorTest.php',
     'XPathSelector\\Tests\\TestCase' => $vendorDir . '/stil/xpath-selector/src/Tests/TestCase.php',
     'app\\controllers\\ParserController' => $baseDir . '/app/controllers/ParserController.php',
+    'app\\controllers\\ProxyController' => $baseDir . '/app/controllers/ProxyController.php',
+    'app\\controllers\\ThreadController' => $baseDir . '/app/controllers/ThreadController.php',
     'app\\core\\Controller' => $baseDir . '/app/core/Controller.php',
     'app\\core\\Database' => $baseDir . '/app/core/Database.php',
+    'app\\core\\Request' => $baseDir . '/app/core/Request.php',
+    'app\\core\\Router' => $baseDir . '/app/core/Router.php',
     'app\\interfaces\\IParser' => $baseDir . '/app/interfaces/IParser.php',
     'app\\models\\Model' => $baseDir . '/app/models/Model.php',
 );
