@@ -108,9 +108,9 @@ $(document).ready(function (){
     $(document).on('change', '#photo', function () {
         if (this.files[0].size > 2000000) {
             $('#photo-size-error').html('File must be less than 2 mb.')
-            $('#submit').prop('disabled', true)
+            $('#second_btn').prop('disabled', true)
         } else {
-            $('#submit').prop('disabled', false)
+            $('#second_btn').prop('disabled', false)
             $('#photo-size-error').empty()
         }
     })
@@ -120,12 +120,10 @@ $(document).ready(function (){
             rules: {
                 firstname: {
                     required: true,
-//                    lettersonly: true,
                     maxlength: 100
                 },
                 lastname: {
                     required: true,
-//                    lettersonly: true,
                     maxlength: 100
                 },
                 birth_date: {
@@ -170,7 +168,7 @@ $(document).ready(function (){
                     extension: 'Only files .jpg, .png, .gif allowed.'
                 },
                 email: {
-                    remote: 'Emile already exists.'
+                    remote: 'Email already exists.'
                 }
             },
             submitHandler: function (form) {

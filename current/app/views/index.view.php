@@ -92,7 +92,8 @@
                         <div class="row">
                             <div class="col-sm-12 form_item">
                                 <label for="photo">Photo</label>
-                                <input type="file" name="photo">
+                                <input id="photo" type="file" name="photo">
+                                <div id="photo-size-error" style="color: #b40404"></div>
                             </div>
                         </div>
                     </div>

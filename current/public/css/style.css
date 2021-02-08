@@ -12,6 +12,13 @@ ul, li {
     padding: 0;
 }
 
+table {
+    word-break: break-word;
+}
+
+.wrapper {
+    padding: 20px 20px;
+}
 /*-------Map----------------------------------*/
 
 .hero {
@@ -159,5 +166,8 @@ ul, li {
 
 /*----All Members Page------------------------*/
 
+.wrapper .back_to_home {
+    padding: 20px 30px;
+}
 
 /*----All Members Page------------------------*/
