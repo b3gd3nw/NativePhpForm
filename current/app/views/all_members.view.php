@@ -10,32 +10,34 @@
     <div class="table_wrapper wrapper">
         <div class="row">
             <div class="col-sm-12">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Photo</th>
-                        <th>Name</th>
-                        <th>Report subject</th>
-                        <th>Email</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($data as $key => $user) : ?>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td scope="row"><?= ++$key ?></td>
-                            <td style="width: 100px">
-                                <img class="user_photo"
-                                     src="<?= ! empty($user['photo']) ? $user['photo'] : '/public/img/photo_idle.png' ?>"
-                                     alt="user_photo">
-                            </td>
-                            <td style="width: 200px"><?= $user['first_name'] ?> <?= $user['last_name'] ?></td>
-                            <td style="width: 1000px;"><?= $user['report_subject'] ?></td>
-                            <td><a href="mailto:<?= $user['email'] ?>"><?= $user['email'] ?></a></td>
+                            <th>#</th>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Report subject</th>
+                            <th>Email</th>
                         </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($data as $key => $user) : ?>
+                            <tr>
+                                <td scope="row"><?= ++$key ?></td>
+                                <td>
+                                    <img class="user_photo"
+                                         src="<?= ! empty($user['photo']) ? $user['photo'] : '/public/img/photo_idle.png' ?>"
+                                         alt="user_photo">
+                                </td>
+                                <td><?= $user['first_name'] ?> <?= $user['last_name'] ?></td>
+                                <td><?= $user['report_subject'] ?></td>
+                                <td><a href="mailto:<?= $user['email'] ?>"><?= $user['email'] ?></a></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
