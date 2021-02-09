@@ -1,0 +1,16 @@
+<?php
+
+//$router->define([
+//
+//    '' => 'controllers/index.php',
+//    'names' => 'controllers/add-user.php',
+//    'test' => 'controllers/test.php'
+//
+//]);
+
+$router->get('', 'PagesController@index');
+$router->post('addUser', 'PagesController@addUser');
+
+
+//var_dump($router->routes);
+//$router->define('', 'controllers/index.php');

@@ -11,7 +11,7 @@ class UsersController
      */
     public function insert()
     {
-        var_dump($_POST);
+
         $phone = str_replace(['+', ' ', '-', '(', ')'], '', $_POST['phone']);
         $date = date("Y-m-d", strtotime($_POST['birthdate']));
 
@@ -67,17 +67,12 @@ class UsersController
 
     public function emailCheck()
     {
+
         if (filter_has_var(INPUT_POST, 'email')) {
-
-            if(App::get('database')->checkExistsEmail(filter_input(INPUT_POST, 'email')))
-            {
-
+            if(App::get('database')->checkExistsEmail(filter_input(INPUT_POST, 'email'))) {
                 echo "false";
-
             } else {
-
                 echo "true";
-
             }
         }
 

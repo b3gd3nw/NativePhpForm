@@ -27,7 +27,7 @@
                                 <td scope="row"><?= ++$key ?></td>
                                 <td>
                                     <img class="user_photo"
-                                         src="<?= ! empty($user['photo']) ? $user['photo'] : '/public/img/photo_idle.png' ?>"
+                                         src="<?= ! empty($user['photo']) ? $user['photo'] : '/img/photo_idle.png' ?>"
                                          alt="user_photo">
                                 </td>
                                 <td><?= $user['first_name'] ?> <?= $user['last_name'] ?></td>

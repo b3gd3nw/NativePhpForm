@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core\database;
+
 class Connection {
 
     /**

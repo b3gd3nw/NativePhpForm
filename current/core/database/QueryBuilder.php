@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core\database;
+
 class QueryBuilder {
 
     protected $pdo;
@@ -81,19 +83,7 @@ class QueryBuilder {
      * Creates a database query on return all members count.
      * @return mixed
      */
-    public function getCountUser()
-    {
-        $sql = "
-        SELECT COUNT(userid) as total FROM Users";
-        try {
-            $statement = $this->pdo->prepare($sql);
-            $statement->execute();
-        } catch (Exception $e){
-            die('SELECT_ALL_ERR');
-        }
 
-        return $statement->fetchAll();
-    }
 
     public function checkExistsEmail($email)
     {
@@ -108,6 +98,11 @@ class QueryBuilder {
         }
 
         return $statement->fetchAll()[0]['total'] > 0 ? true : false;
+    }
+
+    public function connect()
+    {
+        return $this->pdo;
     }
 
 }

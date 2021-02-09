@@ -106,7 +106,7 @@
                                 <div class="item">
                                     <a href="https://www.facebook.com/sharer/sharer.php?u=<?= $data['link'] ?>"
                                        onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
-                                        <img src="/public/img/facebook.svg" alt="facebook">
+                                        <img src="/img/facebook.svg" alt="facebook">
                                     </a>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
                                 <div class="item">
                                     <a href="http://twitter.com/share?&url=<?= $data['link'] ?>&text=<?= $data['text'] ?>"
                                        onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
-                                        <img src="/public/img/twitter.svg" alt="twitter">
+                                        <img src="/img/twitter.svg" alt="twitter">
                                     </a>
                                 </div>
                             </div>
