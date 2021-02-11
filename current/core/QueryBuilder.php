@@ -13,7 +13,7 @@ class QueryBuilder {
 
     public function __construct()
     {
-        $config = require __DIR__ . '../../app/config/config.php';
+        $config = require __DIR__ . '../../app/config/config.php.example';
 
         $this->pdo = new PDO(
 
