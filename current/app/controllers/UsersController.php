@@ -3,32 +3,33 @@
 namespace App\Controllers;
 
 use App\Core\App;
+use App\Core\Controller;
+use App\Models\UsersModel;
 
-class UsersController
+class UsersController extends Controller
 {
+    public function index()
+    {
+        $this->model = new UsersModel();
+        var_dump(4);
+        $this->view->generate('all_members.view.php', $this->model->viewAll());
+    }
+
     /**
      * Save user information from step one to the database.
      */
     public function insert()
     {
-
-        $phone = str_replace(['+', ' ', '-', '(', ')'], '', $_POST['phone']);
-        $date = date("Y-m-d", strtotime($_POST['birthdate']));
-
-        $userid = App::get('database')->insert('Users', [
-            'first_name' => $_POST['firstname'],
-            'last_name' => $_POST['lastname'],
-            'birth_date' => $date,
-            'report_subject' => $_POST['report_subject'],
-            'country' => $_POST['country'],
-            'phone_number' => $phone,
-            'email' => $_POST['email']
-        ]);
-        setcookie('userID', $userid, 0, '/');
-        setcookie('step', 'second', 0 , '/');
-
-
- //      return redirect('');
+        if (! empty(filter_input_array(INPUT_POST))) {
+            $this->model = new UsersModel();
+            if ($userid = $this->model->insert(filter_input_array(INPUT_POST))) {
+                setcookie("userID", $userid, 0, '/');
+                setcookie('step', 'second', 0 , '/');
+                $this->view->generate('index.view.php', [
+                    'countUser' => $this->model->getCountUser()[0],
+                ]);
+            }
+        }
     }
 
     /**
@@ -56,20 +57,11 @@ class UsersController
           return redirect('');
     }
 
-    /**
-     * Return all users from database to 'All members' page.
-     */
-    public function viewAll()
-    {
-        $users = App::get('database')->viewAll();
-        return view('all_members', $users);
-    }
-
     public function emailCheck()
     {
-
         if (filter_has_var(INPUT_POST, 'email')) {
-            if(App::get('database')->checkExistsEmail(filter_input(INPUT_POST, 'email'))) {
+            $this->model = new UsersModel();
+            if($this->model->checkExistsEmail(filter_input(INPUT_POST, 'email'))) {
                 echo "false";
             } else {
                 echo "true";

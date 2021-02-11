@@ -184,8 +184,12 @@ $(document).ready(function (){
                     type: 'post',
                     enctype: 'multipart/form-data',
                     success: function (data) {
+                        console.log(123123);
                         steps(currentButton);
                         currentButton = '#second_btn';
+                    },
+                    error: function (e){
+                        console.log(e)
                     }
                 })
             }

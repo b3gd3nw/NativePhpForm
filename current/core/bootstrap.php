@@ -5,9 +5,8 @@ use App\Core\App;
 App::bind('config', require './../app/config/config.php');
 
 
-App::bind('database', new QueryBuilder(
-    Connection::make(App::get('config')['database'])
-));
+//App::bind('database', new QueryBuilder(
+//));
 
 function view($name, $data = [])
 {

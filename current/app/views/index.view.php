@@ -122,7 +122,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12 text-center">
-                            <a href="/users" id="counter" class="float-right">All members: NULL</a>
+                            <a href="/users" id="counter" class="float-right">All members:  </a>
                         </div>
                     </div>
                 </fieldset>

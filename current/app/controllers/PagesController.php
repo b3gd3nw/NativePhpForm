@@ -2,20 +2,19 @@
 
 namespace App\Controllers;
 
-use App\Core\App;
-//use App\Models\UsersModel;
+use App\Core\Controller;
+use App\Models\UsersModel;
 
-class PagesController
+class PagesController extends Controller
 {
-    /**
+     /**
      * Show home page.
      */
-    public function home()
+    public function index()
     {
-
-//        $all_users = UsersModel::getCountUser();
-//        $config = require __DIR__ . '/../config/config.php';
-//        setcookie('allUsers', $all_users[0]['total'], '/');
-        return view('index',  array_merge($all_users[0], $config['share']));
+        $this->model = new UsersModel();
+        $config = require __DIR__ . '/../config/config.php';
+        $this->view->generate('index.view.php', array_merge($this->model->getCountUser()[0], $config['share']));
+        setcookie('allUsers', $this->model->getCountUser()[0]['total'], '/');
     }
 }
