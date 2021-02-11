@@ -11,7 +11,7 @@ class Controller implements IParser
 
     public function __construct()
     {
-        $this->config = require 'app/config/config.php';
+        $this->config = require 'app/config/config.php.example';
     }
 
     public function getPage(string $url)
