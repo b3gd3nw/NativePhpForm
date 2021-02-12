@@ -7,6 +7,10 @@ use App\Core\Model;
 
 class UsersModel extends Model
 {
+    /**
+     * Return count users.
+     * @return false|\PDOStatement|null
+     */
     public function getCountUser()
     {
         return $this->connect->query("SELECT COUNT(userid) as total FROM Users");
@@ -23,10 +27,15 @@ class UsersModel extends Model
         left JOIN Profile p on p.userid = s.userid");
     }
 
+    /**
+     * Getting data and create add request.
+     * @param $data
+     * @return false|string
+     */
     public function insert($data)
     {
-
         $executeQuery = $this->connect->query(
+
             "
             INSERT INTO Users (first_name, last_name, birth_date, report_subject, country, phone_number, email)
             VALUES (?, ?, ?, ?, ?, ?, ?)",
@@ -40,7 +49,6 @@ class UsersModel extends Model
                 $data['email'],
             ]
         );
-
         if ($executeQuery) {
             return $this->connect->lastInsertId();
         } else {
@@ -48,6 +56,35 @@ class UsersModel extends Model
         }
     }
 
+    /**
+     * Getting data and creates a database query to insert a profile.
+     * @param $data
+     * @param $parameters Profile information from step two.
+     */
+    public function update($data, $photo = null)
+    {
+        $executeQuery = $this->connect->query("
+              INSERT INTO Profile (company, position, about_me, photo, userid)
+              VALUES (?, ?, ?, ?, ?)
+            ", [
+            $data['company'],
+            $data['position'],
+            $data['about'],
+            $photo,
+            filter_input_array(INPUT_COOKIE)['userID']
+        ]);
+
+        if ($executeQuery) {
+            return true;
+        }
+
+    }
+
+    /**
+     * Create a request check exists email.
+     * @param $email
+     * @return bool
+     */
     public function checkExistsEmail($email)
     {
         $executeQuery = $this->connect->query("SELECT COUNT(userid) as total FROM Users WHERE email =?", [$email])[0];

@@ -8,13 +8,13 @@ use App\Models\UsersModel;
 class PagesController extends Controller
 {
      /**
-     * Show home page.
+     * Show home page and grab user count.
      */
     public function index()
     {
         $this->model = new UsersModel();
-        $config = require __DIR__ . '/../config/config.php.example';
-        $this->view->generate('index.view.php', array_merge($this->model->getCountUser()[0], $config['share']));
-        setcookie('allUsers', $this->model->getCountUser()[0]['total'], '/');
+        $counter = $this->model->getCountUser()[0];
+        $config = require __DIR__ . '/../config/config.php';
+        $this->view->generate('index.view.php', $counter , $config['share']);
     }
 }

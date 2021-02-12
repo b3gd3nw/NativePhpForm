@@ -2,16 +2,17 @@
 
 namespace App\Controllers;
 
-use App\Core\App;
 use App\Core\Controller;
 use App\Models\UsersModel;
 
 class UsersController extends Controller
 {
+    /**
+     * Show all members page.
+     */
     public function index()
     {
         $this->model = new UsersModel();
-        var_dump(4);
         $this->view->generate('all_members.view.php', $this->model->viewAll());
     }
 
@@ -26,7 +27,7 @@ class UsersController extends Controller
                 setcookie("userID", $userid, 0, '/');
                 setcookie('step', 'second', 0 , '/');
                 $this->view->generate('index.view.php', [
-                    'countUser' => $this->model->getCountUser()[0],
+                    'countUser' => $this->model->getCountUser()[0]
                 ]);
             }
         }
@@ -37,26 +38,33 @@ class UsersController extends Controller
      */
     public function update()
     {
-        if (isset($_FILES['photo']['name']) && ! empty($_FILES['photo']['name'])) {
-            $imageName = $_FILES['photo']['name'];
-            $target = 'public/img/users/'.$imageName;
-            if (! is_dir('public/img/users/')) {
-                mkdir('public/img/users/');
+        if (! empty(filter_input_array(INPUT_POST))) {
+            $config = require __DIR__ . '/../config/config.php';
+            $target = null;
+
+            if (isset($_FILES['photo']['name']) && !empty($_FILES['photo']['name'])) {
+                $imageName = $_FILES['photo']['name'];
+                $target = 'img/users/' . $imageName;
+                if (!is_dir('img/users/')) {
+                    mkdir('img/users/');
+                }
+                move_uploaded_file($_FILES['photo']['tmp_name'], $target);
             }
-            move_uploaded_file($_FILES['photo']['tmp_name'], $target);
+            $this->model = new UsersModel();
+
+            if ($this->model->update(filter_input_array(INPUT_POST), $target)) {
+                setcookie('step', 'three', 0, '/');
+                $this->view->generate('index.view.php', [
+                    'countUser' => $this->model->getCountUser()[0],
+                    'config' => $config['share'],
+                ]);
+            }
         }
-
-        App::get('database')->update('Profile', [
-            'company' => $_POST['company'],
-            'position' => $_POST['position'],
-            'about_me' => $_POST['about'],
-            'photo' => $target
-        ]);
-        setcookie('step', 'three', 0 , '/');
-
-          return redirect('');
     }
 
+    /**
+     * Cheching email for exists in database.
+     */
     public function emailCheck()
     {
         if (filter_has_var(INPUT_POST, 'email')) {

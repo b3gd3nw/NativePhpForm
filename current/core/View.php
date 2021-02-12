@@ -4,12 +4,11 @@ namespace App\Core;
 
 class View
 {
-    public function generate($contentView, $data = null)
+    public function generate($view, $data = null)
     {
         if (is_array($data)) {
             extract($data);
         }
-
-        include '../app/views/' . $contentView;
+        include '../app/views/' . $view;
     }
 }

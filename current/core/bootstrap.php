@@ -2,11 +2,7 @@
 
 use App\Core\App;
 
-App::bind('config', require './../app/config/config.php.example');
-
-
-//App::bind('database', new QueryBuilder(
-//));
+App::bind('config', require './../app/config/config.php');
 
 function view($name, $data = [])
 {

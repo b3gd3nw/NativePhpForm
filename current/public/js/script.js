@@ -36,10 +36,10 @@ $(document).ready(function (){
 
     $('#phone-number').inputmask('+9 (999) 999-9999');
 
-    let counter = document.querySelector('#counter');
-    if(counter) {
-        counter.textContent = "All members : " + readCookie("allUsers");
-    }
+    // let counter = document.querySelector('#counter');
+    // if(counter) {
+    //     counter.textContent = "All members : " + readCookie("allUsers");
+    // }
 
 
     function readCookie(name) {
@@ -146,8 +146,7 @@ $(document).ready(function (){
                     email: true,
                     remote: {
                         url: '/emailCheck',
-                        type: 'post',
-
+                        type: 'post'
                     }
                 },
                 company: {

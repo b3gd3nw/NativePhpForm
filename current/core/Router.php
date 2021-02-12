@@ -59,7 +59,7 @@ class Router {
                 ...explode('@', $this->routes[$requestType][$uri])
             );
         }
-        throw new Exception("No routes define for this uri");
+//        throw new Exception("No routes define for this uri");
     }
 
     /**

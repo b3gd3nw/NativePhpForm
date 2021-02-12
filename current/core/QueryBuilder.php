@@ -11,9 +11,13 @@ class QueryBuilder {
     private $connected = false;
     private $parameters;
 
+    /**
+     * QueryBuilder constructor.
+     * Creates connection with database.
+     */
     public function __construct()
     {
-        $config = require __DIR__ . '../../app/config/config.php.example';
+        $config = require __DIR__ . '../../app/config/config.php';
 
         $this->pdo = new PDO(
 
@@ -27,36 +31,18 @@ class QueryBuilder {
     }
 
     /**
-     * Creates a database query to insert a profile.
-     * @param $table
-     * @param $parameters Profile information from step two.
+     * Splitting the request and returning rows.
+     * @param $query
+     * @param null $params
+     * @param int $fetchmMode
+     * @return null
      */
-    public function  update($table, $parameters)
-    {
-        $sql = sprintf(
-            'insert into %s (%s) values (%s)',
-            $table,
-            implode(', ', array_keys($parameters)) . ', userid',
-            ':' . implode(', :', array_keys($parameters)) . ', ' . filter_input_array(INPUT_COOKIE)['userID']
-        );
-
-        try {
-            $statement = $this->pdo->prepare($sql);
-
-            $statement->execute($parameters);
-        } catch (Exception $e) {
-            die('UPDATE_ERR');
-        }
-    }
-
- //----------------------------------------------------------------------------------
     public function query($query, $params = null, $fetchmMode = PDO::FETCH_ASSOC)
     {
         $query = trim($query);
         $rawStatement = explode(" ", $query);
         $this->init($query, $params);
         $statement = strtolower($rawStatement[0]);
-
         if ($statement === 'select' || $statement === 'show') {
             return $this->sQuery->fetchAll($fetchmMode);
         } else {
@@ -68,6 +54,11 @@ class QueryBuilder {
         }
     }
 
+    /**
+     * Preparing and executing a request.
+     * @param $query
+     * @param $parameters
+     */
     private function init($query, $parameters)
     {
         if (! $this->connected) {
@@ -94,6 +85,12 @@ class QueryBuilder {
         $this->parameters = array();
     }
 
+    /**
+     * Building query parametrs.
+     * @param $query
+     * @param array $params
+     * @return string|string[]|null
+     */
     private function buildParams($query, $params = array())
     {
         if (! empty($params)) {
@@ -105,18 +102,14 @@ class QueryBuilder {
                     $in = "";
                     foreach ($parameter as $key => $value) {
                         $namePlaceholder = $parameterKey."_".$key;
-                        // concatenates params as named placeholders
                         $in .= ":".$namePlaceholder.", ";
-                        // adds each single parameter to $params
                         $params[$namePlaceholder] = $value;
                     }
                     $in = rtrim($in, ", ");
                     $query = preg_replace("/:".$parameterKey."/", $in, $query);
-                    // removes array form $params
                     unset($params[$parameterKey]);
                 }
             }
-            // updates $this->params if $params and $query have changed
             if ($arrayParameterFound) {
                 $this->parameters = $params;
             }
@@ -124,20 +117,25 @@ class QueryBuilder {
 
         return $query;
     }
-    //----------------------------------------------------------------------------------
 
+    /**
+     * Return last insert into database id.
+     * @return string
+     */
+    public function lastInsertId()
+    {
+       return $this->pdo->lastInsertId();
+    }
 
-
-
-
-
+    /**
+     * Checking the database connection.
+     * @return QueryBuilder|PDO
+     */
     public function connect()
     {
-
         if (self::$pdo === null) {
             self::$pdo = new self();
         }
-
         return self::$pdo;
     }
 
